@@ -370,7 +370,7 @@ function buildSupportProjects(api, config) {
   var tealeafDir = path.join(__dirname, 'TeaLeaf');
   var singleArch = config.argv.arch;
   return Promise.try(function () {
-      if (config.clean || singleArch) {
+      if (config.argv.clean || singleArch) {
         return spawnWithLogger(api, 'make', ['clean'], {cwd: rootDir});
       }
     })
@@ -521,7 +521,7 @@ function copyIcons(app, outputPath) {
       copyNotifyIcon(app, outputPath, "m", "med"),
       copyNotifyIcon(app, outputPath, "h", "high"),
       copyNotifyIcon(app, outputPath, "xh", "xhigh"),
-      copyNotifyIcon(app, outputPath, "xxh", "xxhigh")
+      copyNotifyIcon(app, outputPath, "xxh", "xxhigh"),
       copyNotifyIcon(app, outputPath, "xxxh", "xxxhigh")
     ]);
 }
