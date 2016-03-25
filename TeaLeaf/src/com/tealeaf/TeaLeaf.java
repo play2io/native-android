@@ -308,6 +308,15 @@ public class TeaLeaf extends FragmentActivity {
 				height = screenSize.y;
 			} catch (NoSuchMethodError e) {}
 		}
+		//Subtract height of status bar if it is non full screen mode
+		if (!isFullScreen) {
+			int statusBarHeight = 0;
+			int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+			if (resourceId > 0) {
+			  statusBarHeight = getResources().getDimensionPixelSize(resourceId);
+			}
+			height -= statusBarHeight;
+		}
 
 		// flip width and height based on orientation
 		if ((orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE && height > width)
